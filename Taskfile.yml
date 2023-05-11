@@ -75,9 +75,22 @@ tasks:
       - task: lint:md
 
   test:
+    desc: Run all tests
+    cmds:
+      - task: renovate:test
+
+  renovate:test:
     desc: Test the renovate configurations
     cmds:
-      - docker run --rm -v $(pwd)/default.json:/usr/src/app/default.json -e LOG_LEVEL=debug -e RENOVATE_CONFIG_FILE=default.json renovate/renovate:slim renovate-config-validator
+      - task: renovate:test:base
+        vars:
+          File: default.json
+
+  renovate:test:base:
+    desc: Test the renovate configurations
+    internal: true
+    cmds:
+      - docker run --rm -v $(pwd)/default.json:/usr/src/app/default.json -e LOG_LEVEL=debug -e RENOVATE_CONFIG_FILE={{.File}} renovate/renovate:slim renovate-config-validator
 
   release:
     desc: Create a new tag
