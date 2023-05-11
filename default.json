@@ -1,0 +1,80 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":maintainLockFilesWeekly",
+    ":rebaseStalePrs",
+    ":semanticCommits",
+    ":semanticCommitScope(deps)",
+    ":preserveSemverRanges",
+    ":enablePreCommit",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    "regexManagers:dockerfileVersions"
+  ],
+  "dependencyDashboard": true,
+  "rebaseWhen": "behind-base-branch",
+  "stabilityDays": 7,
+  "labels": [
+    "dependencies"
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "type:security"
+    ],
+    "stabilityDays": 0
+  },
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "description": "Require dashboard approval for major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Automerge non-major updates",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest",
+        "lockFileMaintenance"
+      ],
+      "automerge": true
+    },
+    {
+      "description": "Automerge digest updates for Docker images",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": [
+        "require"
+      ],
+      "groupName": "GO modules",
+      "postUpdateOptions": [
+        "gomodTidy"
+      ],
+      "separateMajorMinor": false
+    }
+  ],
+  "regexManagers": [
+    {
+      "description": "Update docker (multi-stage) base images",
+      "fileMatch": [
+        "^Dockerfile$"
+      ],
+      "matchStrings": [
+        "ARG IMAGE_*?.*?=(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)$"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
+}
