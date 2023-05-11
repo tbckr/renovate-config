@@ -90,7 +90,15 @@ tasks:
     desc: Test the renovate configurations
     internal: true
     cmds:
-      - docker run --rm -v $(pwd)/default.json:/usr/src/app/default.json -e LOG_LEVEL=debug -e RENOVATE_CONFIG_FILE={{.File}} renovate/renovate:slim renovate-config-validator
+      - docker run --rm -v $(pwd)/default.json:/usr/src/app/default.json:ro -e LOG_LEVEL=debug -e RENOVATE_CONFIG_FILE={{.File}} renovate/renovate:slim renovate-config-validator
+
+  renovate:debug:
+    desc: Run the current renovate configuration in debug mode
+    vars:
+      Repo:
+        sh: git remote get-url origin | cut -d':' -f2 | sed 's/\.git//'
+    cmds:
+      - docker run --rm -v $(pwd):/usr/src/app:ro -e LOG_LEVEL=debug -e RENOVATE_CONFIG_FILE=renovate.json -e RENOVATE_TOKEN=${GITHUB_TOKEN} renovate/renovate:35 --dry-run {{.Repo}}
 
   release:
     desc: Create a new tag
