@@ -55,7 +55,6 @@ tasks:
       - which addlicense 1>/dev/null || (echo "addlicense is not installed" && exit 1)
       - which svu 1>/dev/null || (echo "svu is not installed" && exit 1)
 
-
   license-header:
     desc: Add license header to all files
     cmds:
