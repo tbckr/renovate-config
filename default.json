@@ -13,6 +13,9 @@
     "regexManagers:dockerfileVersions"
   ],
   "dependencyDashboard": true,
+  "assignees": [
+    "tbckr"
+  ],
   "rebaseWhen": "behind-base-branch",
   "stabilityDays": 7,
   "labels": [
