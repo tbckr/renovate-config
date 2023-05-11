@@ -75,6 +75,16 @@
         "ARG IMAGE_*?.*?=(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)$"
       ],
       "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Update go dev dependencies",
+      "fileMatch": [
+        "^Taskfile.yml$"
+      ],
+      "matchStrings": [
+        "github\\.com\\/(?<depName>.*?)\\@(?<currentValue>.*?)$"
+      ],
+      "datasourceTemplate": "github-tags"
     }
   ]
 }
