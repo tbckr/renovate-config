@@ -84,7 +84,7 @@
       "matchStrings": [
         "github\\.com\\/(?<depName>.*?)@(?<currentValue>.*?)$"
       ],
-      "datasourceTemplate": "github-tags"
+      "datasourceTemplate": "github-release"
     }
   ]
 }
