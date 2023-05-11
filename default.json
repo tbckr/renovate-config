@@ -82,7 +82,7 @@
         "^Taskfile.yml$"
       ],
       "matchStrings": [
-        "github\\.com\\/(?<depName>.*?)\\@(?<currentValue>.*?)$"
+        "github\\.com\\/(?<depName>.*?)@(?<currentValue>.*?)$"
       ],
       "datasourceTemplate": "github-tags"
     }
