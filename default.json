@@ -66,6 +66,15 @@
         "gomodTidy"
       ],
       "separateMajorMinor": false
+    },
+    {
+      "matchDepTypes": [
+        "provider",
+        "required_provider",
+        "required_version",
+        "module"
+      ],
+      "rangeStrategy": "widen"
     }
   ],
   "regexManagers": [
