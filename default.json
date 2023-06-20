@@ -10,7 +10,8 @@
     ":enablePreCommit",
     "docker:pinDigests",
     "helpers:pinGitHubActionDigests",
-    "regexManagers:dockerfileVersions"
+    "regexManagers:dockerfileVersions",
+    "regexManagers:githubActionsVersions"
   ],
   "dependencyDashboard": true,
   "assignees": [
