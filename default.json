@@ -30,6 +30,9 @@
     "stabilityDays": 0
   },
   "automergeType": "branch",
+  "pip_requirements": {
+    "enabled": false
+  },
   "packageRules": [
     {
       "description": "Require dashboard approval for major updates",
