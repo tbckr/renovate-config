@@ -8,6 +8,7 @@
     ":semanticCommitScope(deps)",
     ":preserveSemverRanges",
     ":enablePreCommit",
+    ":pinDependencies",
     "docker:pinDigests",
     "helpers:pinGitHubActionDigests",
     "regexManagers:dockerfileVersions",
