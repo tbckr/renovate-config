@@ -81,17 +81,5 @@
       ],
       "rangeStrategy": "widen"
     }
-  ],
-  "regexManagers": [
-    {
-      "description": "Update docker (multi-stage) base images",
-      "fileMatch": [
-        "^Dockerfile$"
-      ],
-      "matchStrings": [
-        "ARG IMAGE_*?.*?=(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)$"
-      ],
-      "datasourceTemplate": "docker"
-    }
   ]
 }
