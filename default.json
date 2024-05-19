@@ -50,7 +50,8 @@
         "digest",
         "lockFileMaintenance"
       ],
-      "automerge": true
+      "automerge": true,
+      "ignoreTests": true
     },
     {
       "description": "Automerge digest updates for Docker images",
@@ -60,7 +61,8 @@
       "matchUpdateTypes": [
         "digest"
       ],
-      "automerge": true
+      "automerge": true,
+      "ignoreTests": true
     },
     {
       "matchDepTypes": [
@@ -70,7 +72,8 @@
       "postUpdateOptions": [
         "gomodTidy"
       ],
-      "separateMajorMinor": false
+      "separateMajorMinor": false,
+      "ignoreTests": true
     },
     {
       "matchDepTypes": [
